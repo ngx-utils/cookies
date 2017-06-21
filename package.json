@@ -1,0 +1,55 @@
+{
+  "name": "ngx-cookies",
+  "version": "1.0.0",
+  "description": "Module for manage cookies on client and server side (Angular Universal) for Angular 4.x",
+  "keywords": [
+    "angular",
+    "angular4",
+    "angular 4",
+    "angular universal",
+    "cookie",
+    "cookies"
+  ],
+  "author": "Anton Barada",
+  "main": "bundles/ngx-cookies.umd.min.js",
+  "module": "index.js",
+  "typings": "index.d.ts",
+  "scripts": {
+    "clean:pre": "rimraf release",
+    "clean:post": "rimraf \"src/**/*.ngfactory.ts\" \"index.ngsummary.json\" \"src/**/*.ngsummary.json\"",
+    "copy": "cpy LICENSE package.json README.md release",
+    "build:js": "ngc",
+    "build:umd": "rollup -c",
+    "build:minify": "uglifyjs release/bundles/ngx-cookies.umd.js --screw-ie8 --compress --mangle --comments --output release/bundles/ngx-cookies.umd.min.js",
+    "prebuild": "npm run clean:pre",
+    "build": "npm run build:js && npm run build:umd && npm run build:minify",
+    "postbuild": "npm run clean:post && npm run copy"
+  },
+  "peerDependencies": {
+    "@angular/core": "^2.4.0 || ^4.2.3",
+    "rxjs": "^5.0.1",
+    "zone.js": "^0.8.4"
+  },
+  "devDependencies": {
+    "@angular/common": "^4.2.3",
+    "@angular/compiler": "^4.2.3",
+    "@angular/compiler-cli": "^4.2.3",
+    "@angular/core": "^2.4.0 || ^4.2.3",
+    "cpy-cli": "^1.0.1",
+    "rimraf": "^2.6.1",
+    "rollup": "^0.43.0",
+    "rxjs": "^5.0.1",
+    "typescript": "^2.3.4",
+    "uglify-js": "^3.0.18",
+    "zone.js": "^0.8.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thebarada/ngx-cookies"
+  },
+  "homepage": "https://github.com/thebarada/ngx-cookies#readme",
+  "bugs": {
+    "url": "https://github.com/thebarada/ngx-cookies/issues"
+  },
+  "license": "MIT"
+}
