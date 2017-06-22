@@ -1,5 +1,5 @@
 {
-  "name": "ngx-cookies",
+  "name": "@ngx-utils/cookies",
   "version": "1.0.0",
   "description": "Manage your cookies on client and server side (Angular Universal)",
   "keywords": [
@@ -11,7 +11,7 @@
     "cookies"
   ],
   "author": "Anton Barada",
-  "main": "bundles/ngx-cookies.umd.min.js",
+  "main": "bundles/cookies.umd.min.js",
   "module": "index.js",
   "typings": "index.d.ts",
   "scripts": {
@@ -20,7 +20,7 @@
     "copy": "cpy LICENSE package.json README.md release",
     "build:js": "ngc",
     "build:umd": "rollup -c",
-    "build:minify": "uglifyjs release/bundles/ngx-cookies.umd.js --screw-ie8 --compress --mangle --comments --output release/bundles/ngx-cookies.umd.min.js",
+    "build:minify": "uglifyjs release/bundles/cookies.umd.js --screw-ie8 --compress --mangle --comments --output release/bundles/cookies.umd.min.js",
     "prebuild": "npm run clean:pre",
     "build": "npm run build:js && npm run build:umd && npm run build:minify",
     "postbuild": "npm run clean:post && npm run copy"
@@ -45,11 +45,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/thebarada/ngx-cookies"
+    "url": "https://github.com/ngx-utils/cookies"
   },
-  "homepage": "https://github.com/thebarada/ngx-cookies#readme",
+  "homepage": "https://github.com/ngx-utils/cookies#readme",
   "bugs": {
-    "url": "https://github.com/thebarada/ngx-cookies/issues"
+    "url": "https://github.com/ngx-utils/cookies/issues"
   },
   "license": "MIT"
 }
