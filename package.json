@@ -1,7 +1,7 @@
 {
   "name": "ngx-cookies",
   "version": "1.0.0",
-  "description": "Module for manage cookies on client and server side (Angular Universal) for Angular 4.x",
+  "description": "Manage your cookies on client and server side (Angular Universal)",
   "keywords": [
     "angular",
     "angular4",
