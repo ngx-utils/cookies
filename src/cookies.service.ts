@@ -108,10 +108,9 @@ export class CookiesService implements ICookiesService {
     str += opts.secure ? ';secure' : '';
     let cookiesLength = str.length + 1;
     if (cookiesLength > 4096) {
-      console.log(`Cookie \'${name}\' possibly not set or overflowed because it was too 
+      console.log(`Cookie \'${name}\' possibly not set or overflowed because it was too
       large (${cookiesLength} > 4096 bytes)!`);
     }
     return str;
   }
 }
-
