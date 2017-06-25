@@ -1,12 +1,14 @@
 import { Inject, Injectable } from '@angular/core';
 
-import { CookiesService } from './cookies.service';
-import { CookiesOptionsService } from './cookies-options.service';
-import { CookiesOptions } from './cookies-options';
-import { isString, mergeOptions } from './utils';
+import { CookiesService } from '../cookies.service';
+import { CookiesOptionsService } from '../cookies-options.service';
+import { CookiesOptions } from '../cookies-options';
+import { isString, mergeOptions } from '../utils';
 
 @Injectable()
-export class CookiesNodeService extends CookiesService {
+export class ServerCookiesService extends CookiesService {
+  private newCookies: { [name: string]: string | undefined } = {};
+
   constructor(cookiesOptions: CookiesOptionsService,
               @Inject('REQUEST') private request: any,
               @Inject('RESPONSE') private response: any) {
@@ -14,11 +16,19 @@ export class CookiesNodeService extends CookiesService {
   }
 
   protected cookiesReader(): { [key: string]: any } {
-    return this.request.cookies;
+    const allCookies: { [key: string]: any } = {...this.request.cookies, ...this.newCookies};
+    const cookies: { [key: string]: any } = {};
+    for (const name in allCookies) {
+      if (typeof allCookies[name] !== 'undefined') {
+        cookies[name] = allCookies[name];
+      }
+    }
+    return cookies;
   }
 
   protected cookiesWriter(): (name: string, value: string | undefined, options?: CookiesOptions) => void {
     return (name: string, value: string | undefined, options?: CookiesOptions) => {
+      this.newCookies[name] = value;
       this.response.cookie(name, value, this.buildCookiesOptions(options));
     };
   }
