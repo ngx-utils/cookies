@@ -17,7 +17,46 @@ Manage your cookies on client and server side (Angular Universal)
 
 ## Prerequisites
 
-This package depends on `@angular v4.0.0`.
+This package depends on `@angular v4.0.0` and `cookie-parser`.
+
+Install `cookie-parser` from npm:
+```bash
+npm install cookie-parser --save
+```
+
+And add cookie parser middlewear to you **server.ts** that should looks like this:
+```ts
+import 'zone.js/dist/zone-node';
+import 'reflect-metadata';
+import * as express from 'express';
+import * as cookieParser from 'cookie-parser';
+import { enableProdMode } from '@angular/core';
+import { ngExpressEngine } from '@ngx-utils/express-engine';
+
+import { ServerAppModuleNgFactory } from './ngfactory/server.module.ngfactory';
+import { environment } from './environments/environment';
+
+const app = express();
+
+enableProdMode();
+
+app.use(cookieParser('Your private token'));
+
+app.engine('html', ngExpressEngine({
+  aot: true,
+  bootstrap: ServerAppModuleNgFactory
+}));
+
+app.set('view engine', 'html');
+app.set('views', 'dist/client');
+
+app.get('*', (req, res) => {
+  res.render('../client/index', {cache: true, req, res});
+});
+
+app.listen(environment.port);
+
+```
 
 ## Getting started
 
