@@ -22,7 +22,8 @@
     "build:minify": "uglifyjs release/bundles/cookies.umd.js --screw-ie8 --compress --mangle --comments --output release/bundles/cookies.umd.min.js",
     "prebuild": "npm run clean:pre",
     "build": "npm run build:js && npm run build:umd && npm run build:minify",
-    "postbuild": "npm run clean:post && npm run copy"
+    "postbuild": "npm run clean:post && npm run copy",
+    "release": "npm run build && cd ./release && npm publish"
   },
   "peerDependencies": {
     "@angular/core": "^2.4.0 || ^4.2.3",
