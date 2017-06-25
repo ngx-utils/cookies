@@ -31,7 +31,9 @@
     ]
   },
   "files": [
-    "index.ts"
+    "index.ts",
+    "browser.ts",
+    "server.ts"
   ],
   "angularCompilerOptions": {
     "strictMetadataEmit": true
