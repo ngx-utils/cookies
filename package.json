@@ -15,7 +15,7 @@
   "typings": "index.d.ts",
   "scripts": {
     "clean:pre": "rimraf release",
-    "clean:post": "rimraf \"src/**/*.ngfactory.ts\" \"index.ngsummary.json\" \"src/**/*.ngsummary.json\"",
+    "clean:post": "rimraf \"src/**/*.ngfactory.ts\" \"index.ngsummary.json\" \"browser.ngsummary.json\" \"server.ngsummary.json\" \"src/**/*.ngsummary.json\"",
     "copy": "cpy LICENSE package.json README.md release",
     "build:js": "ngc",
     "build:umd": "rollup -c",
