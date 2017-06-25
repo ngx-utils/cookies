@@ -17,11 +17,11 @@ Manage your cookies on client and server side (Angular Universal)
 
 ## Prerequisites
 
-This package depends on `@angular v4.0.0` and `cookie-parser`.
+This package depends on `@angular v4.0.0`, `@ngx-utils/express-engine` and `cookie-parser`.
 
-Install `cookie-parser` from npm:
+Install `@ngx-utils/express-engine` and `cookie-parser` from npm:
 ```bash
-npm install cookie-parser --save
+npm install @ngx-utils/express-engine cookie-parser --save
 ```
 
 And add cookie parser middlewear to you **server.ts** that should looks like this:
