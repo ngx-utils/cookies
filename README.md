@@ -2,7 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/%40ngx-utils%2Fcookies.svg)](https://badge.fury.io/js/%40ngx-utils%2Fcookies) [![npm downloads](https://img.shields.io/npm/dm/@ngx-utils/cookies.svg)](https://www.npmjs.com/package/@ngx-utils/cookies)
 
-Manage your cookies on client and server side (Angular Universal)
+Manage your cookies on client and server side (Angular Universal) (example [@ngx-utils/universal-starter](https://github.com/ngx-utils/universal-starter))
 
 ## Table of contents:
 - [Prerequisites](#prerequisites)
