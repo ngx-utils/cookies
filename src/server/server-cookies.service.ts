@@ -1,33 +1,45 @@
 import { Inject, Injectable } from '@angular/core';
-
-import { CookiesService } from '../cookies.service';
-import { CookiesOptionsService } from '../cookies-options.service';
 import { CookiesOptions } from '../cookies-options';
+import { CookiesOptionsService } from '../cookies-options.service';
+import { CookiesService } from '../cookies.service';
 import { isString, mergeOptions } from '../utils';
 
 @Injectable()
 export class ServerCookiesService extends CookiesService {
   private newCookies: { [name: string]: string | undefined } = {};
 
-  constructor(cookiesOptions: CookiesOptionsService,
-              @Inject('REQUEST') private request: any,
-              @Inject('RESPONSE') private response: any) {
+  constructor(
+    cookiesOptions: CookiesOptionsService,
+    @Inject('REQUEST') private request: any,
+    @Inject('RESPONSE') private response: any
+  ) {
     super(cookiesOptions);
   }
 
   protected cookiesReader(): { [key: string]: any } {
-    const allCookies: { [key: string]: any } = {...this.request.cookies, ...this.newCookies};
+    const allCookies: { [key: string]: any } = {
+      ...this.request.cookies,
+      ...this.newCookies
+    };
     const cookies: { [key: string]: any } = {};
     for (const name in allCookies) {
       if (typeof allCookies[name] !== 'undefined') {
-        cookies[name] = allCookies[name];
+        cookies[name] = decodeURIComponent(allCookies[name]);
       }
     }
     return cookies;
   }
 
-  protected cookiesWriter(): (name: string, value: string | undefined, options?: CookiesOptions) => void {
-    return (name: string, value: string | undefined, options?: CookiesOptions) => {
+  protected cookiesWriter(): (
+    name: string,
+    value: string | undefined,
+    options?: CookiesOptions
+  ) => void {
+    return (
+      name: string,
+      value: string | undefined,
+      options?: CookiesOptions
+    ) => {
       this.newCookies[name] = value;
       this.response.cookie(name, value, this.buildCookiesOptions(options));
     };
