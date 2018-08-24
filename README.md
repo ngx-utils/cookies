@@ -130,25 +130,12 @@ import * as cookieParser from 'cookie-parser';
 
 app.use(cookieParser('Your private token'));
 
-app.engine('html', (_, options, callback) => {
-  renderModuleFactory(AppServerModuleNgFactory, {
-    document: template,
-    url: options.req.url,
-    extraProviders: [
-      provideModuleMap(LAZY_MODULE_MAP),
-      {
-        provide: 'REQUEST',
-        useValue: options.req
-      },
-      {
-        provide: 'RESPONSE',
-        useValue: options.req.res
-      }
-    ]
-  }).then(html => {
-    callback(null, html);
-  });
-});
+app.engine('html', ngExpressEngine({
+  bootstrap: AppServerModuleNgFactory,
+  providers: [
+    provideModuleMap(LAZY_MODULE_MAP)
+  ],
+}));
 ```
 
 Then just import `CookiesService` from `@ngx-utils/cookies` and use it:
