@@ -124,31 +124,21 @@ ServerCookiesModule.forRoot({
 If you're using `express` as server then add following code to your `server.ts`:
 
 ```ts
-import { renderModuleFactory } from '@angular/platform-server';
-import { provideModuleMap } from '@nguniversal/module-map-ngfactory-loader';
+import * as express from 'express';
 import * as cookieParser from 'cookie-parser';
+import { ngExpressEngine } from '@nguniversal/express-engine';
+import { provideModuleMap } from '@nguniversal/module-map-ngfactory-loader';
+const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require('./dist/server/main');
+
 
 app.use(cookieParser('Your private token'));
 
-app.engine('html', (_, options, callback) => {
-  renderModuleFactory(AppServerModuleNgFactory, {
-    document: template,
-    url: options.req.url,
-    extraProviders: [
-      provideModuleMap(LAZY_MODULE_MAP),
-      {
-        provide: 'REQUEST',
-        useValue: options.req
-      },
-      {
-        provide: 'RESPONSE',
-        useValue: options.req.res
-      }
-    ]
-  }).then(html => {
-    callback(null, html);
-  });
-});
+app.engine('html', ngExpressEngine({
+  bootstrap: AppServerModuleNgFactory,
+  providers: [
+    provideModuleMap(LAZY_MODULE_MAP)
+  ],
+}));
 ```
 
 Then just import `CookiesService` from `@ngx-utils/cookies` and use it:
