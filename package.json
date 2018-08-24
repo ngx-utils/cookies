@@ -26,20 +26,23 @@
     "release": "npm run build && cd ./release && npm publish"
   },
   "peerDependencies": {
-    "@angular/core": "^5.0.0",
-    "rxjs": "^5.5.6",
-    "zone.js": "^0.8.19"
+    "@angular/core": "^6.0.0",
+    "rxjs": "^6.0.0",
+    "zone.js": "^0.8.28"
   },
   "devDependencies": {
-    "@angular/common": "^5.0.0",
-    "@angular/compiler": "^5.0.0",
-    "@angular/compiler-cli": "^5.0.0",
-    "@angular/core": "^5.0.0",
+    "@angular/common": "^6.0.0",
+    "@angular/compiler": "^6.0.0",
+    "@angular/compiler-cli": "^6.0.0",
+    "@angular/core": "^6.0.0",
+    "@nguniversal/express-engine": "^6.0.0",
+    "@types/express": "^4.16.0",
     "cpy-cli": "^1.0.1",
+    "express": "^4.16.0",
     "rimraf": "^2.6.1",
     "rollup": "^0.43.0",
     "rxjs": "^5.5.6",
-    "typescript": "~2.5.3",
+    "typescript": "~2.7.2",
     "uglify-js": "^3.0.18",
     "zone.js": "^0.8.19"
   },
