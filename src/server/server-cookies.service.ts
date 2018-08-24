@@ -1,4 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
+import { REQUEST, RESPONSE } from '@nguniversal/express-engine/tokens';
+import { Request, Response } from 'express';
 import { CookiesOptions } from '../cookies-options';
 import { CookiesOptionsService } from '../cookies-options.service';
 import { CookiesService } from '../cookies.service';
@@ -10,8 +12,8 @@ export class ServerCookiesService extends CookiesService {
 
   constructor(
     cookiesOptions: CookiesOptionsService,
-    @Inject('REQUEST') private request: any,
-    @Inject('RESPONSE') private response: any
+    @Inject(REQUEST) private request: Request,
+    @Inject(RESPONSE) private response: Response
   ) {
     super(cookiesOptions);
   }

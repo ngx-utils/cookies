@@ -1,7 +1,11 @@
 export interface CookiesOptions {
-  path?: string | null;
-  domain?: string | null;
-  expires?: string | Date | null;
-  secure?: boolean | null;
-  httpOnly?: boolean | null;
+  maxAge?: number;
+  signed?: boolean;
+  expires?: Date | boolean;
+  httpOnly?: boolean;
+  path?: string;
+  domain?: string;
+  secure?: boolean | 'auto';
+  encode?: (val: string) => void;
+  sameSite?: boolean | string;
 }
