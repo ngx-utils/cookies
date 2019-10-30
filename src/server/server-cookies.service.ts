@@ -2,7 +2,7 @@ import { Inject, Injectable } from '@angular/core';
 import { CookiesOptions } from '../cookies-options';
 import { CookiesOptionsService } from '../cookies-options.service';
 import { CookiesService } from '../cookies.service';
-import { isString, mergeOptions } from '../utils';
+import { isString, mergeOptions, safeDecodeURIComponent } from '../utils';
 
 @Injectable()
 export class ServerCookiesService extends CookiesService {
@@ -24,7 +24,7 @@ export class ServerCookiesService extends CookiesService {
     const cookies: { [key: string]: any } = {};
     for (const name in allCookies) {
       if (typeof allCookies[name] !== 'undefined') {
-        cookies[name] = decodeURIComponent(allCookies[name]);
+        cookies[name] = safeDecodeURIComponent(allCookies[name]);
       }
     }
     return cookies;
