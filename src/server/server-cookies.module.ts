@@ -7,7 +7,7 @@ import { ServerCookiesService } from './server-cookies.service';
 
 @NgModule()
 export class ServerCookiesModule {
-  static forRoot(options: CookiesOptions = {}): ModuleWithProviders {
+  static forRoot(options: CookiesOptions = {}): ModuleWithProviders<ServerCookiesModule> {
     return {
       ngModule: ServerCookiesModule,
       providers: [
