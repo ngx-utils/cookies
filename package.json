@@ -1,12 +1,12 @@
 {
   "name": "@ngx-utils/cookies",
-  "version": "3.0.2",
+  "version": "4.0.0",
   "description": "Manage your cookies on client and server side (Angular Universal)",
   "keywords": [
     "angular",
-    "angular4",
-    "angular 4",
     "angular universal",
+    "angular ssr",
+    "ssr",
     "cookie",
     "cookies"
   ],
