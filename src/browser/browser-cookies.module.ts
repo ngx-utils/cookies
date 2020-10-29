@@ -9,7 +9,7 @@ import { BrowserCookiesService } from "./browser-cookies.service";
 
 @NgModule()
 export class BrowserCookiesModule {
-  static forRoot(options: CookiesOptions = {}): ModuleWithProviders {
+  static forRoot(options: CookiesOptions = {}): ModuleWithProviders<BrowserCookiesModule> {
     return {
       ngModule: BrowserCookiesModule,
       providers: [
